@@ -1,0 +1,9 @@
+PLAN
+
+FRIDAY - did the outline of it
+SATURDAY - sort out the JSON stuff, finalise communication methods
+SUNDAY - break or testing?
+(SATURDAY and SUNDAY can be interchanged)
+MONDAY - TESTING/IR sensor code (should be kinda short?)
+TUESDAY - more testing
+WEDNESDAY - finalise
