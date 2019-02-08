@@ -22,8 +22,9 @@ def messageDecoder():
 		
 #------------sending messages---------------		
 def sendMessage(message): #sending messages
+	print(message) #testing
 	MSG_INFO = client.publish("IC.embedded/BGJR/test",message)
 	mqtt.error_string(MSG_INFO.rc)
-	client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
+	#client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
 
 
