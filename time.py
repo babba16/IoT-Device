@@ -6,10 +6,12 @@ import time
 
 # prompts user to feed dog y/n
 def prompt_feed ():
-	if input("Would you like to feed now?") == 'y':
-		return True
-	else:
-		return False
+	sendMessage("Would you like to feed now?")   # sends message over MQTT
+	return messageDecoder()    # returns true or false based on received message from user
+#	if input("Would you like to feed now?") == 'y':
+#		return True
+#	else:
+#		return False
 #	print("newfeedingtime: " + str(newfeedingtime))
 
 # function to check set feeding times
@@ -31,9 +33,8 @@ def feeding_time(newday, newfeedingtime):
 
 
 
-# main code
+# test code
 print("Start")
-
 while 1:
 
 	# have time as a global variable
