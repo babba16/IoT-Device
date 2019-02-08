@@ -6,6 +6,8 @@ maxDayLimit = 3
 foodInDay = 0
 scaler = 1 #needs to be updated
 
+bus.write_i2c_block_data(0x48,0x01,[0x88, 0x83]) # configure sensor
+
 def foodTracker(newfeedingtime, newday):
 
 	if newday == True:
@@ -18,11 +20,11 @@ def foodTracker(newfeedingtime, newday):
 		
 def dispenseFood(): #dispenses required amount of food for meal and returns the amount dispensed in thisMeal
 	thisMeal = mealLimit - bowlFood()
+	#TODO: needs to be drive LED to represent motor
 	while  bowlFood() < thisMeal:
-		foo=1 #TODO: needs to be drive LED to represent motor
+		print bowlFood() #for testing, allows us to continuously see the value of the weight applied to sensor. 
 	return thisMeal
 	
-bus.write_i2c_block_data(0x48,0x01,[0x88, 0x83]) # write to it once with config
 	
 def bowlFood(): # go to sensor to get the weight of the food in the bowl
 	#read data from ADC
