@@ -25,10 +25,10 @@ def feeding_time(newday, newfeedingtime):
 			print("newday: " + str(newday))
 	elif current_time == "12:00:00":
 		print("It's lunch time for your dog")
-		prompt_feed(newfeedingtime)
+		newfeedingtime = prompt_feed(newfeedingtime)
 	elif current_time == "20:00:00":
 		print("It's dinner time for your dog")
-		prompt_feed(newfeedingtime)
+		newfeedingtim = prompt_feed(newfeedingtime)
 
 
 
