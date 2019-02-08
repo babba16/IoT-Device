@@ -11,20 +11,26 @@ def feeding_time(newday, newfeedingtime, foodInDay):
 		sendMessage("It's breakfast time for your dog")
 		sendMessage("Yesterday, your dog ate ")
 		sendMessage(foodInDay)
-		newfeedingtime = True
+		sendMessage("Would you like to feed your dog?")
 		newday = True
+		newfeedingtime = messageDecoder()
 		foodTracker(newfeedingtime, newday)
 	elif current_time == "12:00:00":
 		sendMessage("It's lunch time for your dog")
 		sendMessage("This morning, your dog ate ")
 		sendMessage(foodInDay)
+		sendMessage("Would you like to feed your dog?")
 		newday = False
+		newfeedingtime = messageDecoder()
 		foodTracker(newfeedingtime, newday)
 		
 	elif current_time == "20:00:00":
 		sendMessage("It's dinner time for your dog")
 		sendMessage("Today, your dog ate ")
 		sendMessage(foodInDay)
+		sendMessage("Would you like to feed your dog?")
+		newday = False
+		newfeedingtime = messageDecoder()
 		foodTracker(newfeedingtime, newday)
 		
 
