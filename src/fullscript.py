@@ -30,7 +30,8 @@ def dispenseFood(): #dispenses required amount of food for meal and returns the 
 		#add food to bowl
 	return thisMeal
 	
-
+bus.write_i2c_block_data(0x48,0x01,[0x88, 0x83]) # write to it once with config
+	
 def bowlFood(): # go to sensor to get the weight of the food in the bowl
 	#read data from ADC
 	data = int.from_bytes(bus.read_i2c_block_data(0x48,0x00,2),"big")
