@@ -21,6 +21,9 @@ def compareCases(msg):
 		return True
 		
 def messageDecoder(): 
+	client = mqtt.Client()
+	client.connect("test.mosquitto.org",port=1883)
+	
 	client.on_message = on_message
 	client.subscribe("IC.embedded/BGJR/#")
 	client.loop_start()
@@ -31,6 +34,9 @@ def messageDecoder():
 		
 #------------sending messages---------------#		
 def sendMessage(message,food): #sending messages
+	client = mqtt.Client()
+	client.connect("test.mosquitto.org",port=1883)
+	
 	print(message) #testing
 	data_dict = dict(time = time.ctime(), message = message, FoodEaten = food)
 	data_out = json.dumps(data_dict)
