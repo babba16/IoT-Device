@@ -32,7 +32,7 @@ def messageDecoder():
 #------------sending messages---------------#		
 def sendMessage(message,food): #sending messages
 	print(message) #testing
-	data_dict = dict(time = time.ctime(), load = (message,food))
+	data_dict = dict(time = time.ctime(), message = message, FoodEaten = food)
 	data_out = json.dumps(data_dict)
 	MSG_INFO = client.publish("IC.embedded/BGJR/test",data_out)
 	#mqtt.error_string(MSG_INFO.rc)
