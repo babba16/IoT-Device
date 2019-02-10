@@ -1,6 +1,6 @@
 # prompt user to feed the dog @ 8am, 12pm, 8pm
 from messageDecoder import *
-from fullscript import *
+from dispensing import *
 import time
 
 # function to check set feeding times

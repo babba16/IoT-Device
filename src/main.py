@@ -1,5 +1,5 @@
-from time_functions import *
-from fullscript import *
+from feeding_time import *
+from dispensing import *
 from messageDecoder import *
 def main():
 	newday = False
