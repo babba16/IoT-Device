@@ -1,4 +1,5 @@
 import smbus
+import time
 
 bus = smbus.SMBus(1)
 mealLimit = 1
