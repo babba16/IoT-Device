@@ -22,7 +22,7 @@ def dispenseFood(): #dispenses required amount of food for meal and returns the 
 	thisMeal = mealLimit - bowlFood()
 	#TODO: needs to be drive LED to represent motor
 	while  bowlFood() < thisMeal:
-		print bowlFood() #for testing, allows us to continuously see the value of the weight applied to sensor. 
+		print(bowlFood()) #for testing, allows us to continuously see the value of the weight applied to sensor. 
 	return thisMeal
 	
 	

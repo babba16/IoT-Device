@@ -19,7 +19,7 @@ def feeding_time(newday, newfeedingtime, foodInDay):
 		foodTracker(newfeedingtime, newday)
 		
 	elif current_time == "20:00:00":
-		sendMessage("It's dinner time for your dog, would you like to feed your dog? ", foodInDay")
+		sendMessage("It's dinner time for your dog, would you like to feed your dog? ", foodInDay)
 		newday = False
 		newfeedingtime = messageDecoder()
 		foodTracker(newfeedingtime, newday)

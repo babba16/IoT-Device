@@ -35,7 +35,7 @@ def sendMessage(message,food): #sending messages
 	data_dict = dict(time = time.ctime(), message = message, FoodEaten = food)
 	data_out = json.dumps(data_dict)
 	MSG_INFO = client.publish("IC.embedded/BGJR/test",data_out)
-	#mqtt.error_string(MSG_INFO.rc)
+	mqtt.error_string(MSG_INFO.rc)
 	#client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
 
 #---testing stuff----#
