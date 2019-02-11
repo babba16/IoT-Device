@@ -42,12 +42,12 @@ def messageDecoder():
 		
 		
 #------------sending messages---------------#		
-def sendMessage(message,food): #sending messages
+def sendMessage(message,foodEaten,foodLeft): #sending messages
 	client = mqtt.Client()
 	client.connect("test.mosquitto.org",port=1883)
 	
 	print(message) #testing
-	data_dict = dict(time = time.ctime(), message = message, FoodEaten = food)
+	data_dict = dict(time = time.ctime(), message = message, FoodEaten = foodEaten, FoodLeft = foodLeft)
 	data_out = json.dumps(data_dict)
 	MSG_INFO = client.publish("IC.embedded/BGJR/test",data_out)
 	mqtt.error_string(MSG_INFO.rc)
