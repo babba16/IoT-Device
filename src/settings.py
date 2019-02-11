@@ -8,22 +8,35 @@ def scalerSetting():
 	client = mqtt.Client()
 	client.connect("test.mosquitto.org",port=1883)
 
-	MSG_INFO = client.publish("IC.embedded/BGJR/test", "Type what size dog you have, small medium or large:")
+	MSG_INFO = client.publish("IC.embedded/BGJR/test", "What mass of food in kg would you like your dog to eat in a day?")
 	mqtt.error_string(MSG_INFO.rc)
+	
+	selectedWeight = float(userData())
+	
+	scaler = (selectedWeight/3)*33 
+	
+	client = mqtt.Client()
+	client.connect("test.mosquitto.org",port=1883)
 
-	if messageDecoder() == 1:
-		client = mqtt.Client()
-		client.connect("test.mosquitto.org",port=1883)
-		client.publish("IC.embedded/BGJR/test", "Small: 0.5kg of food a day = 3 units split into 1 unit per meal.")
-		return 5.5
-	if messageDecoder() == 2:
-		client = mqtt.Client()
-		client.connect("test.mosquitto.org",port=1883)
-		client.publish("IC.embedded/BGJR/test", "Medium: 1kg of food a day = 3 units split into 1 unit per meal.")
-		return 11
-	if messageDecoder() == 3:
-		client = mqtt.Client()
-		client.connect("test.mosquitto.org",port=1883)
-		client.publish("IC.embedded/BGJR/test", "Large: 1.5kg of food a day = 3 units split into 1 unit per meal.")
-		return 16.5
+	MSG_INFO = client.publish("IC.embedded/BGJR/test", ("Ok, 1 unit of food is equal to ", selectedWeight/3))
+	mqtt.error_string(MSG_INFO.rc)
+	
+	return scaler
+
+
+def on_message(client,userdata,message) :
+	print("Received message:{} on topic {}".format(message.payload, message.topic))
+	global msg_recieved
+	msg_recieved = (message.payload).decode("utf-8")
+	client.loop_stop()
+	
+def userData():
+	client = mqtt.Client()
+	client.connect("test.mosquitto.org",port=1883)
+	
+	client.on_message = on_message
+	client.subscribe("IC.embedded/BGJR/#")
+	client.loop_start()
+	time.sleep(15)
+	return msg_recieved
 	
