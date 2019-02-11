@@ -4,13 +4,12 @@ import time
 bus = smbus.SMBus(1)
 mealLimit = 1
 maxDayLimit = 3
-foodInDay = 0
-scaler = 11 #needs to be updated
+scaler = 0 #needs to be updated
 
 bus.write_i2c_block_data(0x48,0x01,[0x88, 0x83]) # configure sensor
 
-def foodTracker(newfeedingtime, newday):
-
+def foodTracker(settings, newfeedingtime, newday, foodInDay):
+	global scaler = settings
 	if newday == True:
 		print("It's a new day")
 		dayLimit = maxDayLimit - bowlFood()
@@ -20,6 +19,8 @@ def foodTracker(newfeedingtime, newday):
 		print ("Food time!")
 		dayLimit = dayLimit - dispenseFood()
 		foodInDay = foodInDay + dispenseFood()
+		
+	return foodInDay
 		
 def dispenseFood(): #dispenses required amount of food for meal and returns the amount dispensed in thisMeal
 	thisMeal = mealLimit - bowlFood()
