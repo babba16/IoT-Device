@@ -10,15 +10,20 @@ def scalerSetting():
 
 	MSG_INFO = client.publish("IC.embedded/BGJR/test", "Type what size dog you have, small medium or large:")
 	mqtt.error_string(MSG_INFO.rc)
-	
-	data = dict(small = "0.5kg a day = 3 units, 1 unit per meal", medium = "1kg a day = 3 units, 1 unit per meal", large = "1.5kg a day = 3 units, 1 unit per meal")
-	data_out = json.dumps(data)
-	MSG_INFO = client.publish("IC.embedded/BGJR/test", data_out)
-	mqtt.error_string(MSG_INFO.rc)
 
 	if messageDecoder() == 1:
+		client = mqtt.Client()
+		client.connect("test.mosquitto.org",port=1883)
+		client.publish("IC.embedded/BGJR/test", "Small: 0.5kg of food a day = 3 units split into 1 unit per meal.")
 		return 5.5
 	if messageDecoder() == 2:
+		client = mqtt.Client()
+		client.connect("test.mosquitto.org",port=1883)
+		client.publish("IC.embedded/BGJR/test", "Medium: 1kg of food a day = 3 units split into 1 unit per meal.")
 		return 11
 	if messageDecoder() == 3:
+		client = mqtt.Client()
+		client.connect("test.mosquitto.org",port=1883)
+		client.publish("IC.embedded/BGJR/test", "Large: 1.5kg of food a day = 3 units split into 1 unit per meal.")
 		return 16.5
+	
