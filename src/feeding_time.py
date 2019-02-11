@@ -11,7 +11,7 @@ def feeding_time(settings, foodInDay, dayLimit):
 	# prompt user to feed dog at 8am, 12pm, 8pm
 	if current_time != "15:31:00":
 		dayLimit = maxDayLimit - bowlFood(settings)
-		sendMessageStats("It's breakfast time for your dog, would you like to feed your dog? ", 0, 3)
+		sendMessageStats("It's breakfast time for your dog, would you like to feed your dog? ", 0, maxDayLimit)
 		newday = True
 		newfeedingtime = messageDecoder()
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay, dayLimit)
