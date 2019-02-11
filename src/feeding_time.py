@@ -25,6 +25,8 @@ def feeding_time(settings, foodInDay):
 		newfeedingtime = messageDecoder()
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
 		
+	feeding_time(settings, foodInDay)
+		
 
 # main code
 #print("Start")
