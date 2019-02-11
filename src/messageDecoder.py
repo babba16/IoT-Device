@@ -17,8 +17,17 @@ def on_message(client,userdata,message) :
 def compareCases(msg):
 	if msg == 'no':
 		return False
-	else:
+	elif msg == 'yes':
 		return True
+	elif msg == 'small'
+		return 1
+	elif msg == 'medium'
+		return 2
+	elif msg == 'large'
+		return 3
+	else
+		client.publish("IC.embedded/BGJR/test","unknown input, please try again...")
+		messageDecoder()
 		
 def messageDecoder(): 
 	client = mqtt.Client()
