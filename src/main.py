@@ -10,6 +10,7 @@ def main():
 	
 	while 1:
 		feeding_time(settings, foodInDay, dayLimit)
+		print(foodInDay)
 			
 if __name__ == "__main__":
     main()
