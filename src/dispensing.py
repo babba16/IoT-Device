@@ -11,19 +11,16 @@ def foodTracker(settings, newfeedingtime, newday, foodInDay, dayLimit):
 		print("It's a new day")
 		foodInDay = 0
 		
-	if newfeedingtime == True and dayLimit > 0:
+	if newfeedingtime == True:
 		print ("Food time!")
-		foodInDay = foodInDay + dispenseFood(settings)
+		thisMeal = mealLimit - bowlFood(settings)
+		#TODO: needs to be drive LED to represent motor
+		while  bowlFood(settings) < thisMeal:
+			print(bowlFood(settings)) #for testing, allows us to continuously see the value of the weight applied to sensor. 
+			time.sleep(5)
+		foodInDay = foodInDay + thisMeal
 		
 	return foodInDay
-		
-def dispenseFood(settings): #dispenses required amount of food for meal and returns the amount dispensed in thisMeal
-	thisMeal = mealLimit - bowlFood(settings)
-	#TODO: needs to be drive LED to represent motor
-	while  bowlFood(settings) < thisMeal:
-		print(bowlFood(settings)) #for testing, allows us to continuously see the value of the weight applied to sensor. 
-		time.sleep(5)
-	return thisMeal
 	
 	
 def bowlFood(scalar): # go to sensor to get the weight of the food in the bowl
