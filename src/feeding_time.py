@@ -37,7 +37,7 @@ def feeding_time(settings, foodInDay, dayLimit):
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay, dayLimit)
 		SendMessageMeal("Stats for this meal time, food dispensed and food left to be dispensed today:", foodInDay, dayLimit)
 		
-	feeding_time(settings, foodInDay, dayLimit)
+	
 		
 
 # main code
