@@ -19,12 +19,6 @@ def compareCases(msg):
 		return False
 	elif msg == 'yes':
 		return True
-	elif msg == 'small'
-		return 1
-	elif msg == 'medium'
-		return 2
-	elif msg == 'large'
-		return 3
 	else
 		client.publish("IC.embedded/BGJR/test","unknown input, please try again...")
 		messageDecoder()
