@@ -8,7 +8,8 @@ def main():
 	dayLimit = 3
 	settings = scalerSetting()
 	
-	feeding_time(settings, foodInDay, dayLimit)
+	while 1:
+		feeding_time(settings, foodInDay, dayLimit)
 			
 if __name__ == "__main__":
     main()
