@@ -5,11 +5,10 @@ from messageDecoder import *
 
 def main():
 	foodInDay = 0
-	dayLimit = 3
 	settings = scalerSetting()
 	
 	while 1:
-		feeding_time(settings, foodInDay, dayLimit)
+		feeding_time(settings, foodInDay)
 		print(foodInDay)
 			
 if __name__ == "__main__":
