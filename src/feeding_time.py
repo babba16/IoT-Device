@@ -13,7 +13,7 @@ def feeding_time(settings, foodInDay):
 		sendMessageStats("It's breakfast time for your dog, would you like to feed your dog? ", 0, maxDayLimit)
 		newday = True
 		newfeedingtime = messageDecoder()
-		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay, dayLimit)
+		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
 		SendMessageMeal("Stats for today:", foodInDay)
 		
 	elif current_time == "12:00:00":
@@ -22,8 +22,8 @@ def feeding_time(settings, foodInDay):
 		sendMessageStats("It's lunch time for your dog, would you like to feed your dog? ", foodEaten, foodLeft)
 		newday = False
 		newfeedingtime = messageDecoder()
-		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay, dayLimit)
-		SendMessageMeal("Stats for this meal time, food dispensed and food left to be dispensed today:", foodInDay, dayLimit)
+		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
+		SendMessageMeal("Stats for this meal time, food dispensed and food left to be dispensed today:", foodInDay)
 		
 	elif current_time == "20:00:00":
 		foodEaten = 2-bowlFood(settings)
@@ -31,8 +31,8 @@ def feeding_time(settings, foodInDay):
 		sendMessageStats("It's dinner time for your dog, would you like to feed your dog? ", foodEaten, foodLeft)
 		newday = False
 		newfeedingtime = messageDecoder()
-		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay, dayLimit)
-		SendMessageMeal("Stats for this meal time, food dispensed and food left to be dispensed today:", foodInDay, dayLimit)
+		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
+		SendMessageMeal("Stats for this meal time, food dispensed and food left to be dispensed today:", foodInDay)
 		
 	
 		
