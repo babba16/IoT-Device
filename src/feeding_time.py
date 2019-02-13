@@ -15,6 +15,7 @@ def feeding_time(settings, foodInDay):
 		newfeedingtime = messageDecoder()
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
 		SendMessageMeal("Stats for today:", foodInDay)
+		return foodInDay
 		
 	elif current_time == "12:00:00":
 		foodEaten = 1-bowlFood(settings)
