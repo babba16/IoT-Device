@@ -36,23 +36,23 @@ def messageDecoder():
 		
 		
 #------------sending messages---------------#		
-def sendMessageStats(message,foodEaten,foodLeft): #sending messages
+def sendMessageStats(foodEaten,foodLeft): #sending messages
 	client = mqtt.Client()
 	client.connect("test.mosquitto.org",port=1883)
 	
-	print(message) #testing
-	data_dict = dict(time = time.ctime(), message = message, FoodEaten = foodEaten, FoodLeft = foodLeft)
+	
+	data_dict = dict(time = time.ctime(), FoodEaten = foodEaten, FoodLeft = foodLeft)
 	data_out = json.dumps(data_dict)
 	MSG_INFO = client.publish("IC.embedded/BGJR/test",data_out)
 	mqtt.error_string(MSG_INFO.rc)
 	#client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
 	
-def sendMessageMeal(message, foodDispensed, foodLeftDispensed):
+def sendMessageMeal(foodDispensed, foodLeftDispensed):
 	client = mqtt.Client()
 	client.connect("test.mosquitto.org",port=1883)
 	
 	print(message) #testing
-	data_dict = dict(time = time.ctime(), message = message, TotalDispensed = foodDispensed, FoodToBeDispensed = foodLeftDispensed)
+	data_dict = dict(time = time.ctime(), TotalDispensed = foodDispensed, FoodToBeDispensed = foodLeftDispensed)
 	data_out = json.dumps(data_dict)
 	MSG_INFO = client.publish("IC.embedded/BGJR/test",data_out)
 	mqtt.error_string(MSG_INFO.rc)
