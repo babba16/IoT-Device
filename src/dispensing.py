@@ -13,12 +13,11 @@ def foodTracker(settings, newfeedingtime, newday, foodInDay):
 		
 	if newfeedingtime == True:
 		print ("Food time!")
-		print(mealLimit)
-		thisMeal = mealLimit - bowlFood(settings)
+		print("1")
+		thisMeal = 1 - bowlFood(settings)
 		#TODO: needs to be drive LED to represent motor
-		while  bowlFood(settings) < mealLimit:
+		while  bowlFood(settings) < 1:
 			print(bowlFood(settings)) #for testing, allows us to continuously see the value of the weight applied to sensor. 
-			time.sleep(1)
 		foodInDay = foodInDay + thisMeal
 		
 	return foodInDay
@@ -27,5 +26,5 @@ def foodTracker(settings, newfeedingtime, newday, foodInDay):
 def bowlFood(scalar): # go to sensor to get the weight of the food in the bowl
 	#read data from ADC
 	data = int.from_bytes(bus.read_i2c_block_data(0x48,0x00,2),"big")
-	scaledData = (65531-data)/scaler
+	scaledData = (65531-data)/scalar
 	return scaledData
