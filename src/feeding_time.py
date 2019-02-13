@@ -6,42 +6,44 @@ import time
 #maxDayLimit = 3
 
 # function to check set feeding times
-def feeding_time(settings, foodInDay):
+def feeding_time(settings, foodInDay, foodatprevstart):
 	current_time = time.strftime("%H:%M:%S")
 	# prompt user to feed dog at 8am, 12pm, 8pm
 	if current_time != "15:31:00":
-		#send foodinday from previous day - food dispensed previous day was..
-		sendMessageStats(0, maxDayLimit) #"It's breakfast time for your dog, would you like to feed your dog? "
+		foodEaten = 1 - bowlFood(settings)
+		foodatstart = bowlFood(settings)
+		totaleatenprevday = foodatprevstart + foodInDay - foodatstart
+
 		newday = True
 		newfeedingtime = messageDecoder()
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
-		SendMessageMeal(foodInDay) #food sidpensed breakfast
-		return foodInDay
+		SendMessageMeal(foodEaten, totaleatenprevday, foodInDay) #food sidpensed breakfast
+		return [foodInDay, foodatstart]
 		
 	elif current_time == "12:00:00":
 		foodEaten = 1-bowlFood(settings)
-		foodLeft = maxDayLimit - foodEaten
-		sendMessageStats( foodEaten) #"It's lunch time for your dog, would you like to feed your dog? ", foofd eaten for breakfast
+		foodatstart = foodatprevstart
+		totaleatenprevday = foodatprevstart + foodInDay - foodatstart		sendMessageStats( foodEaten) #"It's lunch time for your dog, would you like to feed your dog? ", foofd eaten for breakfast
 		newday = False
 		newfeedingtime = messageDecoder()
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
-		SendMessageMeal( foodInDay)#"Stats for this meal time, food dispensed and food left to be dispensed today:",
-		return foodInDay
+		SendMessageMeal( foodEaten, eatensofartoday, foodInDay)#"Stats for this meal time, food dispensed and food left to be dispensed today:",
+		return [foodInDay, foodatstart]
 		
 		
 	elif current_time == "20:00:00":
 		foodEaten = 1-bowlFood(settings)
-		#foodLeft = maxDayLimit - foodEaten
-		sendMessageStats( foodEaten) # food eaten is food eaten at lunch, "It's dinner time for your dog, would you like to feed your dog? ",
+		foodatstart= foodatprevstart
 		newday = False
 		newfeedingtime = messageDecoder()
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
-		SendMessageMeal( foodInDay)#"Stats for this meal time, food dispensed and food left to be dispensed today:"
-		return foodInDay
+		SendMessageMeal(foodEaten,eatensofartoday, foodInDay)#"Stats for this meal time, food dispensed and food left to be dispensed today:"
+		return [foodInDay, foodatstart]
 	
 	
 	else:
-		return foodInDay
+		foodatstart= foodatprevstart
+		return [foodInDay, foodatstart]
 	
 		
 
