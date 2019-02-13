@@ -1,0 +1,10 @@
+Example Messages (as received from pi):
+
+// stats
+{"id": "stats", "time": "Wed Feb 13 14:32:24 2019", "FoodEaten": "1", "FoodLeft": "1"}
+
+// meal
+{"id": "meal", "time": "Wed Feb 13 14:32:24 2019", "TotalDispensed": "2", "FoodToBeDispensed":"3"}
+
+// set up
+massPrompt
