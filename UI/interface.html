@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<style>
+	body 	{
+		background-color: #f2f2f2;
+	}
+	h1 		{
+		font-family: AvenirNext-Regular;
+		font-size: 50px;
+		color: #1c0808;
+		text-align: center;
+	}
+	h2 {
+		font-family: AvenirNext-Regular;
+		font-size: 30px;
+		color: #1c0808;
+		text-align: left;
+	}
+	p	{
+		font-family: AvenirNext-Regular;
+		font-size: 20px;
+		color: #282828;
+		text-align: left;
+	}
+	.button1 {
+		background-color: #a53d3d;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 20px;
+	}
+	.button1:hover {
+		background-color: #cc2e2e;
+	}
+	.button2 {
+		background-color: #a53d3d;
+		border: none;
+		color: white;
+		padding: 7px 14px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 10px;
+	}
+	.button2:hover {
+		background-color: #cc2e2e;
+	}
+	input[type=number]{
+		font-family: AvenirNext-Regular;
+		background-color: #BABABA;
+		color: black;
+		border: 3px solid #333333;
+	}
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+	<script src="mqttinterface.js"></script>
+</head>
+
+<body>
+
+	<h1>FEED</h1>
+	<p id="prompts"></p>
+	<button id="promptButton1" style="display: none" class="button1" onclick="hidePrompt();messageSend('yes')">Yes</button>
+	<button id="promptButton2" style="display: none" class="button1" onclick="hidePrompt();messageSend('no')">No</button>
+	<h2>Updates</h2>
+	<p id="latest"> No Messages </p>
+	<h2>Settings</h2>
+	<p>Please enter the mass of food to be given to your dog in one day </p>
+	<form>
+		<label style="font-family: AvenirNext-Regular;color: #282828;"for="massIn">Mass:</label>
+		<input type="number" id="massIn" name="massIn">
+		<input type="button" class="button2" onclick="messageSend(document.getElementById('massIn').value)" value="Submit">
+	</form>
+	<p id="sendInfo" style="font-size:10px; color=#727272"></p>
+
+</body>
+
+</html>
