@@ -65,10 +65,10 @@ function messageFormat(msg){
 			document.getElementById("field1").innerHTML = "Food Eaten: " + msg1.FoodEaten;
 			document.getElementById("field2").innerHTML = "Food Left: " + msg1.FoodLeft;
 		}
-		else if (msg.id == 'meal'){
-			document.getElementById("latest").innerHTML = "Mealtime Info at: " + msg.time;
-			document.getElementById("field1").innerHTML = "Food Dispensed: " + msg.TotalDispensed;
-			document.getElementById("field2").innerHTML = "Food to be Dispensed: " + msg.FoodToBeDispensed;
+		else if (msg1.id == 'meal'){
+			document.getElementById("latest").innerHTML = "Mealtime Info at: " + msg1.time;
+			document.getElementById("field1").innerHTML = "Food Dispensed: " + msg1.TotalDispensed;
+			document.getElementById("field2").innerHTML = "Food to be Dispensed: " + msg1.FoodToBeDispensed;
 		}
 	}
  	document.getElementById("sendInfo").innerHTML = "Info: Incoming MQTT data: " + msg;
