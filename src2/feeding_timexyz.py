@@ -3,7 +3,6 @@ from messageDecoder import *
 from dispensing import *
 import time
 
-#maxDayLimit = 3
 
 # function to check set feeding times
 def feeding_time(settings, foodInDay):
@@ -19,13 +18,12 @@ def feeding_time(settings, foodInDay):
 		newfeedingtime= True
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
 		#SendMessageMeal(foodInDay) #food sidpensed breakfast
-		print ("food dispensed breakfast")
-		print (foodInDay)
+		print ("food dispensed breakfast",foodInDay)
 		return foodInDay
 		
 	elif current_time == "12:00:00":
 		foodEaten = 1-bowlFood(settings)
-		foodLeft = maxDayLimit - foodEaten
+		foodLeft = 3 - foodEaten
 		#sendMessageStats( foodEaten) #"It's lunch time for your dog, would you like to feed your dog? ", foofd eaten for breakfast
 		
 		print("It's lunch time for your dog, would you like to feed your dog? ")
@@ -34,8 +32,7 @@ def feeding_time(settings, foodInDay):
 		newfeedingtime = True
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
 		#SendMessageMeal( foodInDay)#"Stats for this meal time, food dispensed and food left to be dispensed today:",
-		print("Stats for this meal time, food dispensed")
-		print (foodInDay)
+		print("Stats for this meal time, food dispensed",foodInDay)
 		return foodInDay
 		
 		
@@ -47,8 +44,7 @@ def feeding_time(settings, foodInDay):
 		newday = False
 		newfeedingtime = True
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
-		print("Stats for this meal time, food dispensed")
-		print (foodInDay)
+		print("Stats for this meal time, food dispensed",foodInDay)
 		return foodInDay
 	
 	
