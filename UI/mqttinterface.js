@@ -26,9 +26,7 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(message) {
 	console.log("onMessageArrived:"+message.payloadString);
 	messageFormat(message.payloadString);
-	if (messageDecoder(message.payloadString)) {
-		promptUser();
-	}
+	messageDecoder(message.payloadString)
 }
 
 function messageSend(msg) {
@@ -41,10 +39,10 @@ function messageSend(msg) {
 // reads mqtt data and returns true if a prompt is required
 function messageDecoder(msg) {
 	if ((msg == "yes") || (msg == "no")) { // if its a feeding time
-		return false;
+		promptUser();
 	}
-	else {
-		return true;
+	else if (msg == "massPrompt"){
+		setUp();
 	}
 }
 
@@ -60,14 +58,20 @@ function messageFormat(msg){
 	if ((msg == "yes") || (msg == "no")){
 		document.getElementById("sendInfo").innerHTML = "Info: Done";
 	}
-	//else {
-	//	msg = json.parse(msg);
-	//	document.getElementById("latest").innerHTML =
-	// 		"Latest Update for " + msg.time\n
-	//}
-	else {
-		document.getElementById("sendInfo").innerHTML = "Info: MQTT data: " + msg;
+	else if (msg !== "massPrompt"){
+		msg1 = JSON.parse(msg);
+		if (msg1.id == 'stats') {
+			document.getElementById("latest").innerHTML = "Latest Update at: " + msg1.time;
+			document.getElementById("field1").innerHTML = "Food Eaten: " + msg1.FoodEaten;
+			document.getElementById("field2").innerHTML = "Food Left: " + msg1.FoodLeft;
+		}
+		else if (msg.id == 'meal'){
+			document.getElementById("latest").innerHTML = "Mealtime Info at: " + msg.time;
+			document.getElementById("field1").innerHTML = "Food Dispensed: " + msg.TotalDispensed;
+			document.getElementById("field2").innerHTML = "Food to be Dispensed: " + msg.FoodToBeDispensed;
+		}
 	}
+ 	document.getElementById("sendInfo").innerHTML = "Info: Incoming MQTT data: " + msg;
 }
 
 // rehide prompt and buttons after user interaction
@@ -75,4 +79,16 @@ function hidePrompt(){
 	document.getElementById("prompts").innerHTML = ""
 	document.getElementById("promptButton1").style.display = "none";
 	document.getElementById("promptButton2").style.display = "none";
+}
+
+function setUp() {
+	document.getElementById("SettingsHeader").style.display = "inline-block";
+	document.getElementById("SettingsPrompt").style.display = "inline-block";
+	document.getElementById("SettingsForm").style.display = "inline-block";
+}
+
+function hideSetUp() {
+	document.getElementById("SettingsHeader").style.display = "none";
+	document.getElementById("SettingsPrompt").style.display = "none";
+	document.getElementById("SettingsForm").style.display = "none";
 }
