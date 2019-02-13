@@ -8,7 +8,7 @@ def scalerSetting():
 	client = mqtt.Client()
 	client.connect("test.mosquitto.org",port=1883)
 
-	MSG_INFO = client.publish("IC.embedded/BGJR/test", "What mass of food in kg would you like your dog to eat in a day?")
+	MSG_INFO = client.publish("IC.embedded/BGJR/test", "a")#What mass of food in kg would you like your dog to eat in a day?
 	mqtt.error_string(MSG_INFO.rc)
 	
 	selectedWeight = float(userData())
@@ -18,7 +18,7 @@ def scalerSetting():
 	client = mqtt.Client()
 	client.connect("test.mosquitto.org",port=1883)
 
-	MSG_INFO = client.publish("IC.embedded/BGJR/test", ("Ok, 1 unit of food is equal to ", selectedWeight/3))
+	MSG_INFO = client.publish("IC.embedded/BGJR/test", ( selectedWeight/3))#"Ok, 1 unit of food is equal to "
 	mqtt.error_string(MSG_INFO.rc)
 	
 	return scaler
@@ -39,4 +39,3 @@ def userData():
 	client.loop_start()
 	time.sleep(15)
 	return msg_recieved
-	
