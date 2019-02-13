@@ -8,7 +8,7 @@ def main():
 	settings = scalerSetting()
 	
 	while 1:
-		feeding_time(settings, foodInDay)
+		foodInDay = feeding_time(settings, foodInDay)
 		print(foodInDay)
 			
 if __name__ == "__main__":
