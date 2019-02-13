@@ -47,7 +47,7 @@ def sendMessageStats(message,foodEaten,foodLeft): #sending messages
 	mqtt.error_string(MSG_INFO.rc)
 	#client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
 	
-def sendMessageMeal(message, foodDispensed, foodLeftDispensed)
+def sendMessageMeal(message, foodDispensed, foodLeftDispensed):
 	client = mqtt.Client()
 	client.connect("test.mosquitto.org",port=1883)
 	
