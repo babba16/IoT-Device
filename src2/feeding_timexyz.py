@@ -9,7 +9,7 @@ import time
 def feeding_time(settings, foodInDay,foodatprevstart):
 	current_time = time.strftime("%H:%M:%S")
 	# prompt user to feed dog at 8am, 12pm, 8pm
-	if current_time == "23:42:00":
+	if current_time == "09:57:00":
 		
 		foodEaten = 1 - bowlFood(settings)
 		foodatstart = bowlFood(settings)
@@ -27,7 +27,7 @@ def feeding_time(settings, foodInDay,foodatprevstart):
 		print("Stats for the day, food eaten previous meal,previous day, food dispensed", foodEaten, totaleatenprevday,  foodInDay)
 		return [foodInDay, foodatstart]
 		
-	elif current_time == "23:42:30":
+	elif current_time == "09:57:30":
 		foodEaten = 1-bowlFood(settings)
 		foodatstart= foodatprevstart
 		eatensofartoday = foodatprevstart + foodInDay - foodatstart
@@ -42,7 +42,7 @@ def feeding_time(settings, foodInDay,foodatprevstart):
 		return [foodInDay, foodatstart]
 		
 		
-	elif current_time == "23:00:00":
+	elif current_time == "09:58:00":
 		foodEaten = 1-bowlFood(settings)
 		foodatstart= foodatprevstart
 		eatensofartoday = foodatprevstart + foodInDay - foodatstart
@@ -58,6 +58,7 @@ def feeding_time(settings, foodInDay,foodatprevstart):
 	
 	else:
 		foodatstart= foodatprevstart
+		
 		return [foodInDay, foodatstart]
 	
 		

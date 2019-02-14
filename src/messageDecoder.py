@@ -2,8 +2,11 @@ import paho.mqtt.client as mqtt
 import time
 import json
 
+print("start")
 client = mqtt.Client()
+print("abaout to connect")
 client.connect("ee-estott-octo.ee.ic.ac.uk",port=1883)
+print("Connected!")
 
 msg_recieved = None
 
@@ -19,7 +22,7 @@ def compareCases(msg):
 		return False
 	elif msg == 'yes':
 		return True
-	else
+	else:
 		client.publish("IC.embedded/BGJR/test","unknown input, please try again...")
 		messageDecoder()
 
@@ -47,16 +50,18 @@ def sendMessageMeal(foodEaten, eatensofartoday, foodInDay):
 	mqtt.error_string(MSG_INFO.rc)
 
 def sendMessageDogDetect(data):
+	print("in right file")
 	client = mqtt.Client()
 	client.connect("ee-estott-octo.ee.ic.ac.uk",port=1883)
 
-	print(message) #testing
-	data_dict = dict(id = "Pet", Data = data)
+	print(data) #testing
+	data_dict = dict(id = "Pet",time = time.ctime(), Data = data)
 	data_out = json.dumps(data_dict)
-	MSG_INFO = client.publish("IC.embedded/BGJR/test",data_out)
+	MSG_INFO = client.publish("IC.embedded/BGJR/test",data_out,qos=0)
 	mqtt.error_string(MSG_INFO.rc)
+	print("finished")
 
 
 #---testing stuff----#
-#sendMessage("Foo")
+sendMessageDogDetect("Foo")
 #print(messageDecoder())

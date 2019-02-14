@@ -1,6 +1,6 @@
 import smbus
 import time
-
+from gpiozero import LED
 bus = smbus.SMBus(1)
 mealLimit = 1
 
@@ -12,12 +12,15 @@ def foodTracker(settings, newfeedingtime, newday, foodInDay):
 		foodInDay = 0
 		
 	if newfeedingtime == True:
+		led = LED(17)
 		print ("Food time!")
 		print("1")
 		thisMeal = 1 - bowlFood(settings)
 		#TODO: needs to be drive LED to represent motor
 		while  bowlFood(settings) < 1:
 			print(bowlFood(settings)) #for testing, allows us to continuously see the value of the weight applied to sensor. 
+			led.on()
+		led.off()
 		foodInDay = foodInDay + thisMeal
 		
 	return foodInDay
