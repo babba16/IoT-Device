@@ -38,7 +38,7 @@ function messageSend(msg) {
 
 // reads mqtt data and returns true if a prompt is required
 function messageDecoder(msg) {
-	if ((msg == "yes") || (msg == "no")) { // if its a feeding time
+	if (msg == "feed") { // if its a feeding time
 		promptUser();
 	}
 	else if (msg == "massPrompt"){
@@ -58,7 +58,7 @@ function messageFormat(msg){
 	if ((msg == "yes") || (msg == "no")){
 		document.getElementById("sendInfo").innerHTML = "Info: Done";
 	}
-	else if (msg !== "massPrompt"){
+	else if (msg.includes("id")){
 		msg1 = JSON.parse(msg);
 		if (msg1.id == 'stats') {
 			document.getElementById("latest").innerHTML = "Latest Update at: " + msg1.time;
@@ -69,6 +69,9 @@ function messageFormat(msg){
 			document.getElementById("latest").innerHTML = "Mealtime Info at: " + msg1.time;
 			document.getElementById("field1").innerHTML = "Food Dispensed: " + msg1.TotalDispensed;
 			document.getElementById("field2").innerHTML = "Food to be Dispensed: " + msg1.FoodToBeDispensed;
+		}
+		else if (msg1.id == 'Pet'){
+			document.getElementById("field3").innerHTML = "Dog Last at Bowl at: " + msg1.time;
 		}
 	}
  	document.getElementById("sendInfo").innerHTML = "Info: Incoming MQTT data: " + msg;
