@@ -8,3 +8,6 @@ Example Messages (as received from pi):
 
 // set up
 massPrompt
+
+// dog at Bowl
+{"id": "Pet", "time": "Wed Feb 13 14:32:24 2019"}
