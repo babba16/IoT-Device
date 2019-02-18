@@ -15,6 +15,7 @@ def on_message(client,userdata,message) :
 	client.loop_stop()
 
 def compareCases(msg):
+#different user input options handled here:
 	if msg == 'no':
 		return False
 	elif msg == 'yes':
