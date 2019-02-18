@@ -1,8 +1,8 @@
-from feeding_timexyz import *
+from feeding_time import *
 from dispensing import *
-from settingsxyz import *
-#from messageDecoder import *
-from petdetectxyz import *
+from settings import *
+from messageDecoder import *
+from petdetect import *
 
 def main():
 	foodInDay = 0
