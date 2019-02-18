@@ -3,58 +3,42 @@ from messageDecoder import *
 from dispensing import *
 import time
 
-#maxDayLimit = 3
-
 # function to check set feeding times
 def feeding_time(settings, foodInDay, foodatprevstart):
 	current_time = time.strftime("%H:%M:%S")
 	# prompt user to feed dog at 8am, 12pm, 8pm
-	if current_time != "15:31:00":
-		foodEaten = 1 - bowlFood(settings)
-		foodatstart = bowlFood(settings)
-		totaleatenprevday = foodatprevstart + foodInDay - foodatstart
-
+	if current_time == "09:00:00":
+		foodEaten = 1 - bowlFood(settings) #food eaten previous meal.
+		foodatstart = bowlFood(settings) #food at start of current meal
+		totaleatenprevday = foodatprevstart + foodInDay - foodatstart #total food eaten yesterday
 		newday = True
-		newfeedingtime = messageDecoder()
-		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
-		SendMessageMeal(foodEaten, totaleatenprevday, foodInDay) #food sidpensed breakfast
+		newfeedingtime = messageDecoder() #get input from user, check whether to feed pet.
+		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay) #get food dispensed so far
+		SendMessageMeal(foodEaten, totaleatenprevday, foodInDay) #food dispensed breakfast
 		return [foodInDay, foodatstart]
 		
 	elif current_time == "12:00:00":
-		foodEaten = 1-bowlFood(settings)
-		foodatstart = foodatprevstart
-		totaleatenprevday = foodatprevstart + foodInDay - foodatstart		sendMessageStats( foodEaten) #"It's lunch time for your dog, would you like to feed your dog? ", foofd eaten for breakfast
+		foodEaten = 1-bowlFood(settings) #food eaten previous meal.
+		foodatstart = foodatprevstart #food at start of current meal
+		totaleatenprevday = foodatprevstart + foodInDay - foodatstart #total food eaten so far.
 		newday = False
-		newfeedingtime = messageDecoder()
-		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
-		SendMessageMeal( foodEaten, eatensofartoday, foodInDay)#"Stats for this meal time, food dispensed and food left to be dispensed today:",
+		newfeedingtime = messageDecoder() #get input from user, check whether to feed pet.
+		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay) #get food dispensed so far
+		SendMessageMeal( foodEaten, eatensofartoday, foodInDay) #food dispensed lunch
 		return [foodInDay, foodatstart]
 		
 		
 	elif current_time == "20:00:00":
-		foodEaten = 1-bowlFood(settings)
-		foodatstart= foodatprevstart
+		foodEaten = 1-bowlFood(settings) #food eaten previous meal.
+		foodatstart = foodatprevstart #food at start of current meal
+		totaleatenprevday = foodatprevstart + foodInDay - foodatstart #total food eaten so far.
 		newday = False
-		newfeedingtime = messageDecoder()
-		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
-		SendMessageMeal(foodEaten,eatensofartoday, foodInDay)#"Stats for this meal time, food dispensed and food left to be dispensed today:"
+		newfeedingtime = messageDecoder() #get input from user, check whether to feed pet.
+		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)  #get food dispensed so far
+		SendMessageMeal(foodEaten,eatensofartoday, foodInDay) #food dispensed dinner
 		return [foodInDay, foodatstart]
 	
 	
 	else:
-		foodatstart= foodatprevstart
+		foodatstart = foodatprevstart
 		return [foodInDay, foodatstart]
-	
-		
-
-# main code
-#print("Start")
-
-#while 1:
-
-	# have time as a global variable
-#	 
-#	newday = False
-#	newfeedingtime = False
-	# poll function
-#	feeding_time(newday, newfeedingtime)
