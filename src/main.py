@@ -6,7 +6,7 @@ from petdetect import *
 
 def main():
 	foodInDay = 0
-	settings = scalerSetting() #equal to one unit of food
+	settings = scalerSetting() #number to normalise sensor output equal to one unit of food
 	stats = [0,0]
 	
 	while 1:

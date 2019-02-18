@@ -17,7 +17,7 @@ def foodTracker(settings, newfeedingtime, newday, foodInDay):
 		
 		while  bowlFood(settings) < 1:
 			print(bowlFood(settings)) #for testing, allows us to continuously see the value of the weight applied to sensor. 
-			led.on()
+			led.on() #led is on while food is left to be put into bowl.
 		led.off()
 		foodInDay = foodInDay + thisMeal
 		

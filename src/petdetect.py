@@ -4,10 +4,10 @@ from gpiozero import DigitalInputDevice
 
 diginput=DigitalInputDevice(22)
 def WhenActivated():
-	data = "dog at bowl"
+	data = "pet at bowl"
 	sendMessageDogDetect(data)
 def WhenDeactivated():
-        data = "dog left bowl"
+        data = "pet left bowl"
 	sendMessageDogDetect(data)
 
 
