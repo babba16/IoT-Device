@@ -2,8 +2,11 @@ import paho.mqtt.client as mqtt
 import time
 import json
 
+print("start")
 client = mqtt.Client()
+print("abaout to connect")
 client.connect("ee-estott-octo.ee.ic.ac.uk",port=1883)
+print("Connected!")
 
 msg_recieved = None
 
@@ -19,7 +22,7 @@ def compareCases(msg):
 		return False
 	elif msg == 'yes':
 		return True
-	else
+	else:
 		client.publish("IC.embedded/BGJR/test","unknown input, please try again...")
 		messageDecoder()
 
@@ -36,27 +39,29 @@ def messageDecoder():
 
 
 #------------sending messages---------------#
-def sendMessageStats(foodEaten,foodLeft): #sending messages
-	client = mqtt.Client()
-	client.connect("ee-estott-octo.ee.ic.ac.uk",port=1883)
-
-
-	data_dict = dict(id = "stats", time = time.ctime(), FoodEaten = foodEaten, FoodLeft = foodLeft)
-	data_out = json.dumps(data_dict)
-	MSG_INFO = client.publish("IC.embedded/BGJR/test",data_out)
-	mqtt.error_string(MSG_INFO.rc)
-	#client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
-
-def sendMessageMeal(foodDispensed, foodLeftDispensed):
+def sendMessageMeal(foodEaten, eatensofartoday, foodInDay):
 	client = mqtt.Client()
 	client.connect("ee-estott-octo.ee.ic.ac.uk",port=1883)
 
 	print(message) #testing
-	data_dict = dict(id = "meal",time = time.ctime(), TotalDispensed = foodDispensed, FoodToBeDispensed = foodLeftDispensed)
+	data_dict = dict(id = "meal",time = time.ctime(), foodEaten = foodEaten, FoodEatenToday = eatensofartoday, FoodDispensedToday = foodInDay)
 	data_out = json.dumps(data_dict)
 	MSG_INFO = client.publish("IC.embedded/BGJR/test",data_out)
 	mqtt.error_string(MSG_INFO.rc)
 
+def sendMessageDogDetect(data):
+	print("in right file")
+	client = mqtt.Client()
+	client.connect("ee-estott-octo.ee.ic.ac.uk",port=1883)
+
+	print(data) #testing
+	data_dict = dict(id = "Pet",time = time.ctime(), Data = data)
+	data_out = json.dumps(data_dict)
+	MSG_INFO = client.publish("IC.embedded/BGJR/test",data_out,qos=0)
+	mqtt.error_string(MSG_INFO.rc)
+	print("finished")
+
+
 #---testing stuff----#
-#sendMessage("Foo")
+sendMessageDogDetect("Foo")
 #print(messageDecoder())

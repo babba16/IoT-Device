@@ -6,53 +6,60 @@ import time
 #maxDayLimit = 3
 
 # function to check set feeding times
-def feeding_time(settings, foodInDay):
+def feeding_time(settings, foodInDay,foodatprevstart):
 	current_time = time.strftime("%H:%M:%S")
 	# prompt user to feed dog at 8am, 12pm, 8pm
-	if current_time == "19:48:00":
-		#send foodinday from previous day - food dispensed previous day was..
+	if current_time == "09:57:00":
 		
-		#sendMessageStats(0, maxDayLimit) #"It's breakfast time for your dog, would you like to feed your dog? "
+		foodEaten = 1 - bowlFood(settings)
+		foodatstart = bowlFood(settings)
+		totaleatenprevday = foodatprevstart + foodInDay - foodatstart
+
+
+
+
 		print("It's breakfast time for your dog, would you like to feed your dog? ")
 		newday = True
 		#newfeedingtime = messageDecoder()
 		newfeedingtime= True
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
-		#SendMessageMeal(foodInDay) #food sidpensed breakfast
-		print ("food dispensed breakfast", foodInDay)
-		return foodInDay
+		#SendMessageMeal(foodEaten,totaleatenprevday, foodInDay) #food sidpensed breakfast
+		print("Stats for the day, food eaten previous meal,previous day, food dispensed", foodEaten, totaleatenprevday,  foodInDay)
+		return [foodInDay, foodatstart]
 		
-	elif current_time == "19:48:30":
+	elif current_time == "09:57:30":
 		foodEaten = 1-bowlFood(settings)
-		foodLeft = 3 - foodEaten
-		#sendMessageStats( foodEaten) #"It's lunch time for your dog, would you like to feed your dog? ", foofd eaten for breakfast
+		foodatstart= foodatprevstart
+		eatensofartoday = foodatprevstart + foodInDay - foodatstart
 		
 		print("It's lunch time for your dog, would you like to feed your dog? ")
 		newday = False
 		#newfeedingtime = messageDecoder()
 		newfeedingtime = True
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
-		#SendMessageMeal( foodInDay)#"Stats for this meal time, food dispensed and food left to be dispensed today:",
-		print("Stats for the day, food dispensed", foodInDay)
-		return foodInDay
+		#SendMessageMeal(foodEaten,eatensofartoday foodInDay)#"Stats for this meal time, food dispensed and food left to be dispensed today:",
+		print("Stats for the day, food eaten previous meal, eatensofartoday, food dispensed", foodEaten, eatensofartoday,  foodInDay)
+		return [foodInDay, foodatstart]
 		
 		
-	elif current_time == "20:00:00":
+	elif current_time == "09:58:00":
 		foodEaten = 1-bowlFood(settings)
-		#foodLeft = maxDayLimit - foodEaten
-		#sendMessageStats( foodEaten) # food eaten is food eaten at lunch, "It's dinner time for your dog, would you like to feed your dog? ",
+		foodatstart= foodatprevstart
+		eatensofartoday = foodatprevstart + foodInDay - foodatstart
 		print ("It's dinner time for your dog")
 		newday = False
+		#newfeedingtime = messageDecoder()
 		newfeedingtime = True
 		foodInDay = foodTracker(settings, newfeedingtime, newday, foodInDay)
-		print("Stats for this meal time, food dispensed")
-		print (foodInDay)
-		return foodInDay
+		print("Stats for the day, food eaten previous meal, eatensofartoday, food dispensed", foodEaten, eatensofartoday,  foodInDay)
+		#SendMessageMeal(foodEaten,eatensofartoday, foodInDay)#"Stats for this meal time, food dispensed and food left to be dispensed today:",
+		return [foodInDay, foodatstart]
 	
 	
 	else:
+		foodatstart= foodatprevstart
 		
-		return foodInDay
+		return [foodInDay, foodatstart]
 	
 		
 

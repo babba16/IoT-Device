@@ -1,5 +1,5 @@
 // Create a client instance
-client = new Paho.MQTT.Client("ee-estott-octo.ee.ic.ac.uk", 8080, "clientId");
+client = new Paho.MQTT.Client("test.mosquitto.org", 8080, "clientId");
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
@@ -26,7 +26,6 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(message) {
 	console.log("onMessageArrived:"+message.payloadString);
 	messageFormat(message.payloadString);
-	messageDecoder(message.payloadString)
 }
 
 function messageSend(msg) {
@@ -36,19 +35,9 @@ function messageSend(msg) {
 	//document.getElementById("sendInfo").innerHTML = "Done";
 }
 
-// reads mqtt data and returns true if a prompt is required
-function messageDecoder(msg) {
-	if ((msg == "yes") || (msg == "no")) { // if its a feeding time
-		promptUser();
-	}
-	else if (msg == "massPrompt"){
-		setUp();
-	}
-}
-
 // displays prompt and enables 'yes' and 'no' buttons
-function promptUser() {
-	document.getElementById("prompts").innerHTML = "Would you like to feed your dog now?";
+function promptUser(time) {
+	document.getElementById("prompts").innerHTML = "It's time for " + time + ". Would you like to feed your dog now?";
 	document.getElementById("promptButton1").style.display = "inline-block";
 	document.getElementById("promptButton2").style.display = "inline-block";
 }
@@ -58,7 +47,10 @@ function messageFormat(msg){
 	if ((msg == "yes") || (msg == "no")){
 		document.getElementById("sendInfo").innerHTML = "Info: Done";
 	}
-	else if (msg !== "massPrompt"){
+	else if (msg == "massPrompt"){
+		setUp();
+	}
+	else if (msg.includes("id")){
 		msg1 = JSON.parse(msg);
 		if (msg1.id == 'stats') {
 			document.getElementById("latest").innerHTML = "Latest Update at: " + msg1.time;
@@ -69,6 +61,11 @@ function messageFormat(msg){
 			document.getElementById("latest").innerHTML = "Mealtime Info at: " + msg1.time;
 			document.getElementById("field1").innerHTML = "Food Dispensed: " + msg1.TotalDispensed;
 			document.getElementById("field2").innerHTML = "Food to be Dispensed: " + msg1.FoodToBeDispensed;
+			hidePrompt();
+		}
+		else if (msg1.id == 'Pet'){
+			shiftUpdate();
+			document.getElementById("field1").innerHTML = "Dog Last at Bowl at: " + msg1.time;
 		}
 	}
  	document.getElementById("sendInfo").innerHTML = "Info: Incoming MQTT data: " + msg;
