@@ -4,3 +4,5 @@
 #FOFOFO - FOURTH COLOUR COLOUR
 #FFFFFF - WHITE
 #OOOOOO - BLACK
+
+https://www.rapidtables.com/convert/color/hex-to-rgb.html
