@@ -12,3 +12,5 @@ PUT ALL OF CODE INTO src!!!!!
 |continue with structured labs |  | |
 |System overview | | |
 |start website (we have an extension) | Make a wix thing so it is live site and not static | |
+
+Webpage: https://bda164.wixsite.com/feedabowl/
