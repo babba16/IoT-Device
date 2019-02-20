@@ -1,6 +1,6 @@
 Webpage: https://bda164.wixsite.com/feedabowl/
 
-<h1>ystem Idea Overview<h2> 
+<h1>System Idea Overview</h1> 
 
 Cat/Dog food dispenser
 
@@ -23,5 +23,5 @@ Ideas for implementation:
 	*Either motor to lift a flap to dispense food or an electromagnet. 
 	*Possible camera to take picture of pet.
 
-<h3>System Diagram<h3>
+<h3>System Diagram</h3>
 ![system diagram](system_diagram.JPG)
