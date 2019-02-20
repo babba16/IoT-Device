@@ -23,4 +23,4 @@ Measures amount of food in bowl in order to prevent overflow and amount of food 
 Either motor to lift a flap to dispense food or an electromagnet. 
 Possible camera to take picture of pet.
 
-![alt text](system_diagram.jpg)
+![alt text](system_diagram.JPG)
