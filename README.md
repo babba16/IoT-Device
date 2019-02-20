@@ -1,16 +1,24 @@
-PUT ALL OF CODE INTO src!!!!!
- 
-
-
-
-|        TODO         |                               How we do it                                      | Implemented? |
-|-----------------------------|-------------------------------------------------------------------------|--------------|
-| Get ideas                   |                                                                          | Yessir       |
-|Get name for product 
-|Get Infrared sensor and new load sesnor| | |
-|Find out how they work | Read datasheets | |
-|continue with structured labs |  | |
-|System overview | | |
-|start website (we have an extension) | Make a wix thing so it is live site and not static | |
-
 Webpage: https://bda164.wixsite.com/feedabowl/
+
+System Idea Overview 
+
+Cat/Dog food dispenser
+
+Aim,
+Dispense food from a food bucket when the pet is nearby waiting for food at certain times of the day. 
+
+Requirements, 
+Needs to sense when pet is in area.
+Needs to dispense correct amount of food and not overflow bowl.
+Needs to notify owner when food stock running low.
+Needs to be programmable for food volume depending on pet size and period of time in which pet should be fed in order to prevent over feeding. 
+
+Further future requirements, 
+Could send a picture of pet feeding to owner. 
+
+Ideas for implementation,
+Infrared sensor for when pet is near bowl. 
+Load sensor for weight of pet bowl. 
+Measures amount of food in bowl in order to prevent overflow and amount of food dispensed in order to know when food bucket running low. 
+Either motor to lift a flap to dispense food or an electromagnet. 
+Possible camera to take picture of pet.
