@@ -22,3 +22,5 @@ Load sensor for weight of pet bowl.
 Measures amount of food in bowl in order to prevent overflow and amount of food dispensed in order to know when food bucket running low. 
 Either motor to lift a flap to dispense food or an electromagnet. 
 Possible camera to take picture of pet.
+
+![alt text](/System Diagram)
