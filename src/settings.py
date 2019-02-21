@@ -5,6 +5,7 @@ import paho.mqtt.client as mqtt
 
 msg_received = None
 
+#gets the scaler from user used to normalise the data from sensor based on how much food you want to give your pet a day.
 def scalerSetting():
 
 	client = mqtt.Client()
@@ -25,13 +26,14 @@ def scalerSetting():
 
 	return scaler
 
-
+#called when message received
 def on_message(client,userdata,message) :
 	print("Received message:{} on topic {}".format(message.payload, message.topic))
 	global msg_recieved
 	msg_recieved = (message.payload).decode("utf-8")
 	client.loop_stop()
 
+#gets message from user.
 def userData():
 	client = mqtt.Client()
 	client.connect("ee-estott-octo.ee.ic.ac.uk",port=1883)
