@@ -1,25 +1,28 @@
 Webpage: https://bda164.wixsite.com/feedabowl/
 
-<h1>System Idea Overview</h1> 
+<h1>Feed-a-Bowl</h1> 
+The innovative product with sales potential and clever appication of sensors. 
 
-Cat/Dog food dispenser
+Webpage: https://bda164.wixsite.com/feedabowl/
+ For additional martketing, also see the flyer.pdf made which is in Marketing Stuff for additional compelling marketing 
 
 Aim:
-  * Dispense food from a food bucket when the pet is nearby waiting for food at certain times of the day. 		
+  * Dispense food from a food container when the pet is nearby waiting for food at certain times of the day. 		
 
-Requirements: 
-  * Needs to sense when pet is in area.
-  * Needs to dispense correct amount of food and not overflow bowl.
-  * Needs to notify owner when food stock running low.
-  * Needs to be programmable for food volume depending on pet size and period of time in which pet should be fed in order to prevent over feeding. 
+Capabilities: 
+  * Can sense when pet is in area.
+  * Can dispense correct amount of food and not overflow bowl.
+  * Can notify owner when food stock running low.
+  * Can be programmable for food volume depending on pet size and period of time in which pet should be fed in order to prevent over feeding. 
 
 Further future requirements:
   * Could send a picture of pet feeding to owner. 
 
-Ideas for implementation:
+Sensors Used:
   * Infrared sensor for when pet is near bowl. 
   * Load sensor for weight of pet bowl. 
-  * Measures amount of food in bowl in order to prevent overflow and amount of food dispensed in order to know when food bucket running low. 
+
+Future I/O devices to be used  
   * Either motor to lift a flap to dispense food or an electromagnet. 
   * Possible camera to take picture of pet.
 
