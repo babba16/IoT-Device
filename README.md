@@ -32,3 +32,5 @@ Future I/O devices to be used
 <h3>System Diagram</h3>
 
 ![alt text](system_diagram.JPG)
+
+Application code in src, user interface in UI 
