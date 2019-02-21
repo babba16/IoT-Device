@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 
+<!--
+HTML innterface for IoT Pet feeder
+Embedded Systems 2019
+Team BGJR
+-->
+
 <html>
 
 <head>
@@ -70,24 +76,29 @@
 		border: 3px solid #333333;
 	}
 	</style>
+	<!-- JS for MQTT messaging -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+	<!-- JS fo data handling -->
 	<script src="mqttinterface.js"></script>
+	<!-- JS for timed prompts -->
 	<script src="timer.js"></script>
 </head>
 
 <body>
 
 	<h1>FEED</h1>
+		<!-- Feeding Prompts -->
 		<p id="prompts"></p>
 		<button id="promptButton1" style="display: none" class="button1" onclick="hidePrompt();messageSend('yes')">Yes</button>
 		<button id="promptButton2" style="display: none" class="button1" onclick="hidePrompt();messageSend('no')">No</button>
+	<!-- Updates Tab -->
 	<h2>Updates</h2>
 		<div id="update">
 			<p id="latest"> No Messages </p>
 			<p id="field1" style="font-size: 13px;"></p>
 			<p id="field2" style="font-size: 13px;"></p>
 		</div>
-
+	<!-- Settings Area for inputting set up information -->
 	<h2 id=SettingsHeader style="display: none">Settings</h2>
 		<br/>
 		<p id=SettingsPrompt style="display: none">Please enter the mass of food to be given to your dog in one day </p>
@@ -97,6 +108,7 @@
 			<input type="number" id="massIn" name="massIn">
 			<input type="button" class="button2" onclick="hideSetUp();messageSend(document.getElementById('massIn').value)" value="Submit">
 		</form>
+		<!-- Raw MQTT message data displayed at bottom of page --> 
 		<p id="sendInfo" style="font-size:10px; color=#727272; position: fixed; bottom: 5px; left: 5px;"></p>
 
 </body>

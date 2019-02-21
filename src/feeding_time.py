@@ -3,7 +3,7 @@ from messageDecoder import *
 from dispensing import *
 import time
 
-# function to check set feeding times
+# function to check set feeding times and get stats for the day.
 def feeding_time(settings, foodInDay, foodatprevstart):
 	current_time = time.strftime("%H:%M:%S")
 	# prompt user to feed dog at 8am, 12pm, 8pm

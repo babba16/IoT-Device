@@ -37,6 +37,7 @@ def messageDecoder():
 
 
 #------------sending messages---------------#
+#message for food stats
 def sendMessageMeal(foodEaten, eatensofartoday, foodInDay):
 	client = mqtt.Client()
 	client.connect("ee-estott-octo.ee.ic.ac.uk",port=1883)
@@ -46,6 +47,7 @@ def sendMessageMeal(foodEaten, eatensofartoday, foodInDay):
 	MSG_INFO = client.publish("IC.embedded/BGJR/test",data_out)
 	mqtt.error_string(MSG_INFO.rc)
 
+#message for detecting pet at bowl.
 def sendMessageDogDetect(data):
 	client = mqtt.Client()
 	client.connect("ee-estott-octo.ee.ic.ac.uk",port=1883)

@@ -1,7 +1,7 @@
 from messageDecoder import *
 from gpiozero import DigitalInputDevice
 
-
+#sends message to user when pet goes to food bowl.
 diginput=DigitalInputDevice(22)
 def WhenActivated():
 	data = "pet at bowl"
