@@ -6,6 +6,7 @@ bus = smbus.SMBus(1)
 
 bus.write_i2c_block_data(0x48,0x01,[0x88, 0x83]) # configure sensor
 
+#dispenses food and gets the food dispensed in the day.
 def foodTracker(settings, newfeedingtime, newday, foodInDay):
 	if newday == True:
 		print("It's a new day")
@@ -23,7 +24,7 @@ def foodTracker(settings, newfeedingtime, newday, foodInDay):
 		
 	return foodInDay
 	
-	
+#interacts with sensor and normalises data.	
 def bowlFood(scalar): # go to sensor to get the weight of the food in the bowl
 	#read data from ADC
 	data = int.from_bytes(bus.read_i2c_block_data(0x48,0x00,2),"big")
