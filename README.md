@@ -1,10 +1,12 @@
-Webpage: https://bda164.wixsite.com/feedabowl/
 
-<h1>Feed-a-Bowl</h1> 
+
+<h1>Feed-a-Bowl</h1>
+
 The innovative product with sales potential and clever appication of sensors. 
 
+
 Webpage: https://bda164.wixsite.com/feedabowl/
- For additional martketing, also see the flyer.pdf made which is in Marketing Stuff for additional compelling marketing 
+ For additional martketing, also see the flyer.pdf made which is in marketing stuff for additional compelling marketing 
 
 Aim:
   * Dispense food from a food container when the pet is nearby waiting for food at certain times of the day. 		
