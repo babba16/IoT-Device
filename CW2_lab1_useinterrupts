@@ -61,7 +61,7 @@ DigitalOut L2H(L2Hpin);
 DigitalOut L3L(L3Lpin);
 DigitalOut L3H(L3Hpin);
 
-int8_t orState = 0;
+int8_t orState = 0; //new global variable
 void newfunc();
 
 
@@ -126,6 +126,9 @@ int main() {
     I1.rise(&newfunc);
     I2.rise(&newfunc);
     I3.rise(&newfunc);
+    I1.fall(&newfunc);
+    I2.fall(&newfunc);
+    I3.fall(&newfunc);
     
     
     //Poll the rotor state and set the motor outputs accordingly to spin the motor
